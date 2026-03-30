@@ -52,6 +52,10 @@ import AdminBiddingDashboard from "./pages/Bidding/AdminBiddingDashboard";
 import ParticipantBiddingPage from "./pages/Bidding/ParticipantBiddingPage";
 import EventManagementHomePage from "./pages/Event/EventManagementHomePage";
 import EventLuckydraw from "./pages/Event/EventLuckydraw";
+import EventBookingHome from "./pages/EventBooking/EventBookingHome";
+import EventBookingDashboard from "./pages/EventBooking/EventBookingDashboard";
+import EventBookingTicketPage from "./pages/EventBooking/EventBookingTicketPage";
+import EventTicketBookingForm from "./pages/EventBooking/EventTicketBookingForm";
 
 export default function App() {
   const location = useLocation();
@@ -92,7 +96,12 @@ export default function App() {
     location.pathname.includes("/event-luckydraw") ||
     location.pathname.includes("/giftstatus")||
     location.pathname.includes("/member-details/")||
-    location.pathname.includes("/scanDashboard/");
+    location.pathname.includes("/scanDashboard/") ||
+    //event booking 
+    location.pathname.includes("/event-booking") ||
+    location.pathname.includes("/eventbooking-dashboard") ||
+    location.pathname.includes("/events") ||
+    location.pathname.includes("/checkout");
 
   return (
     <div className="max-w-full overflow-x-hidden">
@@ -240,6 +249,13 @@ export default function App() {
           element={<UserDetail />}
         />
         <Route path="/scanDashboard/:documentId" element={<MemberDashBoard />} />
+
+           {/* ================= EVENT BOOKING ================= */}
+          
+        <Route path="/:adminId/event-booking" element={<EventBookingHome />} />
+        <Route path="/:adminId/eventbooking-dashboard/:documentId" element={<EventBookingDashboard />} />
+        <Route path="/:adminId/events/:documentId" element={<EventBookingTicketPage />} />
+        <Route path="/:adminId/checkout/:documentId" element={<EventTicketBookingForm />} />
       </Routes>
 
       {!hideLayout && <Footer />}

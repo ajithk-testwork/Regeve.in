@@ -56,6 +56,7 @@ import EventBookingHome from "./pages/EventBooking/EventBookingHome";
 import EventBookingDashboard from "./pages/EventBooking/EventBookingDashboard";
 import EventBookingTicketPage from "./pages/EventBooking/EventBookingTicketPage";
 import EventTicketBookingForm from "./pages/EventBooking/EventTicketBookingForm";
+import ParticipantTicketPage from "./pages/EventBooking/ParticipantTicketPage";
 
 export default function App() {
   const location = useLocation();
@@ -101,7 +102,8 @@ export default function App() {
     location.pathname.includes("/event-booking") ||
     location.pathname.includes("/eventbooking-dashboard") ||
     location.pathname.includes("/events") ||
-    location.pathname.includes("/checkout");
+    location.pathname.includes("/checkout") ||
+    location.pathname.includes("/participant-ticketpage");
 
   return (
     <div className="max-w-full overflow-x-hidden">
@@ -256,6 +258,7 @@ export default function App() {
         <Route path="/:adminId/eventbooking-dashboard/:documentId" element={<EventBookingDashboard />} />
         <Route path="/:adminId/events/:documentId" element={<EventBookingTicketPage />} />
         <Route path="/:adminId/checkout/:documentId" element={<EventTicketBookingForm />} />
+        <Route path="/:adminId/participant-ticketpage/:participationId" element={<ParticipantTicketPage />} />
       </Routes>
 
       {!hideLayout && <Footer />}
